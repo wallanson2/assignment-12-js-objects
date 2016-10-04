@@ -113,25 +113,24 @@ function generateDog(str){
     speak : function(dogMsg){
       var arrOfWords = dogMsg.split(" ")
       if(arrOfWords.length > 1) {
-        var newSentenceArr = []
+        var newSentenceArr = [];
         for(var i = 0 ; i < arrOfWords.length ; i++){
           var singleWord = arrOfWords[i];
-          var lettersArr = singleWord.split('')
+          var lettersArr = singleWord.split('');
           lettersArr[0] = "r";
-          var rWordStr = lettersArr.join('')
+          var rWordStr = lettersArr.join('');
           newSentenceArr.push(rWordStr);
         }
           var newSentenceStr = newSentenceArr.join(' ')
-         console.log(newSentenceStr)
-        return newSentenceStr
+        return newSentenceStr;
       }
     }
   }
-  return dogObj
+  return dogObj;
 }
 
 
-var dog = generateDog('rex')
+var dog = generateDog('rex');
 
 console.assert(dog.legs === 4)
 console.assert(dog.name === 'rex')
@@ -238,11 +237,12 @@ var object = {
 }
 //  INPUT: object
 function reverseObject(obj){
-  var reversed = []
-  for (var theProp in obj) {   
+  var reversed = [];
+  for (var theProp in obj) {
      reversed[obj[theProp]] = theProp;
   }
-  return reversed
+
+  return reversed;
 //  OUTPUT:  Object with values and keys reversed
 }
 
@@ -267,6 +267,17 @@ var users = [
    { yammer: 'yeb@aol.com', hobby: 'portraiture',  favoriteFood: "croissant" }
 ]
 // should yield: [{'president@gmail.com': 'obama',basketball: 'hobby'}, ....]
+function reverseObjects(arrOfObjs) {
+  var backAssWords = []
+  for (var i = 0; i < arrOfObjs.length; i += 1) {
+    var objHolder = {}
+    for (var theProp in arrOfObjs[i]) {
+      objHolder[arrOfObjs[i][theProp]] = theProp;
+    }
+      backAssWords.push(objHolder)
+  }
+  return backAssWords;
+}
 
 var flippedUsers = reverseObjects(users)
 

@@ -1,29 +1,37 @@
 
 
-// Write a function called reverseObject(). It should take as input an object,
-// and it should output a new object where the keys and values are reversed.
+// Write a function called reverseAll(). It should take as input an array of
+// objects, and it should output an array of objects with the keys and values
+// reversed.
+console.log("am I connected?")
+var users = [
+   { willis: 'president@gmail.com',hobby: 'basketball' , favoriteFood: "pate" },
+   { benzo: 'bonjourben@yahoo.com', hobby:'dealmaking' , favoriteFood: "steak" },
+   { yammer: 'yeb@aol.com', hobby: 'portraiture',  favoriteFood: "croissant" }
+]
+//  INPUT: Array of objects =======================================
 
-console.log("are we up and running?")
-console.log('Well are we?')
 
-var object = {
-    occupants: 4,
-    apartment_no: "2b",
-    structural_integrity: "failing"
-}
-
-//  INPUT: object
-function reverseObject(obj){
-  var reversed = []
-  for (var theProp in obj) {    // theProp[obj] = obj[theProp]
-     reversed[obj[theProp]] = theProp;
+function reverseObjects(arrOfObjs) {
+  var backAssWords = []
+  for (var i = 0; i < arrOfObjs.length; i += 1) {
+    var objHolder = {}
+    for (var theProp in arrOfObjs[i]) {
+      objHolder[arrOfObjs[i][theProp]] = theProp;
+    }
+      backAssWords.push(objHolder)
   }
-  return reversed
-//  OUTPUT:  Object with values and keys reversed
+  return backAssWords;
 }
 
+//  OUTPUT: Array of objects with keys and values reversed  =========
 
 
+// should yield: [{'president@gmail.com': 'obama',basketball: 'hobby'}, ....]
 
-var reversed = reverseObject(object)
-console.assert( reversed['2b'] === 'apartment_no' )
+var flippedUsers = reverseObjects(users)
+
+console.assert( flippedUsers[0]['president@gmail.com'] === 'willis' )
+console.assert( flippedUsers[1]['bonjourben@yahoo.com'] === 'benzo' )
+console.assert( flippedUsers[1].dealmaking === 'hobby' )
+console.assert( flippedUsers[2].croissant === 'favoriteFood' )
